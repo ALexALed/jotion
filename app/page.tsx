@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <Button variant='outline' size='lg'>
+    <Button variant="outline" size="lg">
       Click it
     </Button>
   );
