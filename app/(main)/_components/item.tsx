@@ -81,7 +81,7 @@ export const Item = ({
         if (!expanded) {
           onExpand?.();
         }
-        // router.push(`/documents/${documentId}`);
+        router.push(`/documents/${documentId}`);
       },
     );
 
@@ -100,27 +100,27 @@ export const Item = ({
       role="button"
       style={{ paddingLeft: level ? `${level * 12 + 12}px` : "12px" }}
       className={cn(
-        "group min-h-[27px] text-sm py-1 pr-3 w-full hover:bg-primary/5 flex items-center text-muted-foreground font-medium",
+        "hover:bg-primary/5 text-muted-foreground group flex min-h-[27px] w-full items-center py-1 pr-3 text-sm font-medium",
         active && "bg-primary/5 text-primary",
       )}
     >
       {!!id && (
         <div
           role="button"
-          className="h-full rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 mr-1"
+          className="mr-1 h-full rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600"
           onClick={handleExpand}
         >
-          <ChevronIcon className="h-4 w-4 shrink-0 text-muted-foreground/50" />
+          <ChevronIcon className="text-muted-foreground/50 h-4 w-4 shrink-0" />
         </div>
       )}
       {documentIcon ? (
-        <div className="shrink-0 mr-2 text-[18px]">{documentIcon}</div>
+        <div className="mr-2 shrink-0 text-[18px]">{documentIcon}</div>
       ) : (
-        <Icon className="shrink-0 h-[18px] mr-2 text-muted-foreground" />
+        <Icon className="text-muted-foreground mr-2 h-[18px] shrink-0" />
       )}
       <span className="truncate">{label}</span>
       {isSearch && (
-        <kbd className="ml-auto pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mon text-[10px] font-medium text-muted-foreground opacity-100">
+        <kbd className="bg-muted font-mon text-muted-foreground pointer-events-none ml-auto inline-flex h-5 select-none items-center gap-1 rounded border px-1.5 text-[10px] font-medium opacity-100">
           <span className="text-xs">CMD</span>K
         </kbd>
       )}
@@ -130,9 +130,9 @@ export const Item = ({
             <DropdownMenuTrigger onClick={(e) => e.stopPropagation()} asChild>
               <div
                 role="button"
-                className="opacity-0 group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600"
+                className="ml-auto h-full rounded-sm opacity-0 hover:bg-neutral-300 group-hover:opacity-100 dark:hover:bg-neutral-600"
               >
-                <MoreHorizontal className="h-4 w-4 text-muted-foreground" />
+                <MoreHorizontal className="text-muted-foreground h-4 w-4" />
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent
@@ -142,11 +142,11 @@ export const Item = ({
               forceMount
             >
               <DropdownMenuItem onClick={onArchive}>
-                <Trash className="h-4 w-4 mr-2" />
+                <Trash className="mr-2 h-4 w-4" />
                 Delete
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <div className="text-sm text-muted-foreground p-2">
+              <div className="text-muted-foreground p-2 text-sm">
                 Last edited by: {user?.fullName}
               </div>
             </DropdownMenuContent>
@@ -154,9 +154,9 @@ export const Item = ({
           <div
             role="button"
             onClick={onCreate}
-            className="opacity-0 group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600"
+            className="ml-auto h-full rounded-sm opacity-0 hover:bg-neutral-300 group-hover:opacity-100 dark:hover:bg-neutral-600"
           >
-            <Plus className="h-4 w-4 text-muted-foreground" />
+            <Plus className="text-muted-foreground h-4 w-4" />
           </div>
         </div>
       )}

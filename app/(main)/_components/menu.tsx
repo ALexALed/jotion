@@ -28,7 +28,9 @@ export const Menu = ({ documentId }: MenuProps) => {
   const archive = useMutation(api.documents.archive);
 
   const onArchive = () => {
-    const promise = archive({ id: documentId });
+    const promise = archive({ id: documentId }).then(() =>
+      router.push("/documents"),
+    );
     toast.promise(promise, {
       loading: "Moving to trash...",
       success: "Note moved to trash",
@@ -52,11 +54,11 @@ export const Menu = ({ documentId }: MenuProps) => {
         forceMount
       >
         <DropdownMenuItem>
-          <TrashIcon className="h-4 w-4 mr-2" />
+          <TrashIcon className="mr-2 h-4 w-4" />
           Delete
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <div className="text-xs text-muted-foreground p-2">
+        <div className="text-muted-foreground p-2 text-xs">
           Last edited by {user?.fullName}
         </div>
       </DropdownMenuContent>
